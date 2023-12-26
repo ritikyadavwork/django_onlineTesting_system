@@ -1,0 +1,161 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}
+OTS - Candidate Login Form
+{% endblock %}
+{% block content %}
+<header class="bg-dark py-5">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+                <div class="text-center my-5">
+                    <h1 class="display-5 fw-bolder text-white mb-2">Welcome {{ request.session.username }} to Online
+                        Testing System</h1>
+                    <p class="lead text-white-50 mb-4">"Our platform empowers you to effortlessly create, manage, and
+                        conduct tests, simplifying the entire process for seamless online assessments</p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'OTS:login' %}">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="py-5 border-bottom" id="features">
+    <div class="container px-5 my-5">
+        <div class="row gx-5">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i>
+                </div>
+                <h2 class="h4 fw-bolder">Python Syntax Quiz</h2>
+                <p>This quiz is designed to test your understanding of Python programming language syntax. Python, known
+                    for its simplicity and readability, is a popular language among developers of all levels.</p>
+                <a class="text-decoration-none btn btn-primary btn-lg btn-block" href="{% url 'OTS:testPaper' %}?n=5">
+                    Test of 5 Questions
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i>
+                </div>
+                <h2 class="h4 fw-bolder">Django Web Development Quiz</h2>
+                <p>This quiz is designed to evaluate your expertise in building robust web applications using the Django
+                    web framework.</p>
+                <a class="text-decoration-none btn btn-primary btn-lg btn-block" href="{% url 'OTS:testPaper' %}?n=10">
+                    Test of 10 Questions
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            <div class="col-lg-4">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i>
+                </div>
+                <h2 class="h4 fw-bolder">Featured title</h2>
+                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another
+                    sentence and probably just keep going until we run out of words.is a popular language among
+                    developers of all levels.</p>
+                <a class="text-decoration-none btn btn-primary btn-lg btn-block" href="{% url 'OTS:testPaper' %}?n=15">
+                    Test of 15 Questions
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5 border-bottom">
+    <div class="container px-5 my-5 px-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bolder">User testimonials</h2>
+            <p class="lead mb-0">Our User love working with us</p>
+        </div>
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+                <div class="card mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0"><i class="bi bi-chat-right-quote-fill text-primary fs-1"></i>
+                            </div>
+                            <div class="ms-4">
+                                <p class="mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam praesentium
+                                    quo accusamus libero blanditiis modi quibusdam esse maxime quaerat, dolores,
+                                    voluptatem.
+                                </p>
+                                <div class="small text-muted">Ritik Yadav, New Delhi</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0"><i class="bi bi-chat-right-quote-fill text-primary fs-1"></i>
+                            </div>
+                            <div class="ms-4">
+                                <p class="mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam praesentium
+                                    quo accusamus libero blanditiis modi quibusdam esse maxime quaerat, dolores,
+                                    voluptatem.</p>
+                                <div class="small text-muted">Pooja Yadav, Delhi</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="bg-light py-5">
+    <div class="container px-5 my-5 px-5">
+        <div class="text-center mb-5">
+            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i>
+            </div>
+            <h2 class="fw-bolder">Get in touch</h2>
+            <p class="lead mb-0">We'd love to hear from you</p>
+        </div>
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+                <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="post" action="{% url 'OTS:form'%}">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="name" name="name" type="text" placeholder="Enter your name..."
+                            data-sb-validations="required" />
+                        <label for="name">Full name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="email" type="email" name="email" placeholder="name@example.com"
+                            data-sb-validations="required,email" />
+                        <label for="email">Email address</label>
+                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="phone" name="phone" type="tel" placeholder="(123) 456-7890"
+                            data-sb-validations="required" />
+                        <label for="phone">Phone number</label>
+                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" id="message" name="message" type="text"
+                            placeholder="Enter your message here..." style="height: 10rem"
+                            data-sb-validations="required"></textarea>
+                        <label for="message">Message</label>
+                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.
+                        </div>
+                    </div>
+                    <div class="d-grid"><button class="btn btn-primary btn-lg " value="submit" id="submitButton"
+                            type="submit">Submit</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container px-5">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
+    </div>
+</footer>
+</body>
+
+</html>
+
+{% endblock %}
